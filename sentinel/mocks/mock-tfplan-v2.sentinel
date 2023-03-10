@@ -1,0 +1,488 @@
+terraform_version = "1.3.7"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_s3_bucket.dev": {
+			"address":        "aws_s3_bucket.dev",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "dev",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_s3_bucket",
+			"values": {
+				"acl":                       "private",
+				"bucket_prefix":             null,
+				"cors_rule":                 [],
+				"force_destroy":             true,
+				"grant":                     [],
+				"lifecycle_rule":            [],
+				"logging":                   [],
+				"replication_configuration": [],
+				"tags": {
+					"environment": "dev",
+				},
+				"tags_all": {
+					"environment": "dev",
+				},
+				"website": [],
+			},
+		},
+		"aws_s3_bucket_acl.dev": {
+			"address":        "aws_s3_bucket_acl.dev",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "dev",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_s3_bucket_acl",
+			"values": {
+				"acl": "public-read",
+				"expected_bucket_owner": null,
+			},
+		},
+		"random_pet.petname": {
+			"address":        "random_pet.petname",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "petname",
+			"provider_name":  "registry.terraform.io/hashicorp/random",
+			"tainted":        false,
+			"type":           "random_pet",
+			"values": {
+				"keepers":   null,
+				"length":    4,
+				"prefix":    null,
+				"separator": "-",
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_s3_bucket.dev": {
+		"address": "aws_s3_bucket.dev",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"acl":                       "private",
+				"bucket_prefix":             null,
+				"cors_rule":                 [],
+				"force_destroy":             true,
+				"grant":                     [],
+				"lifecycle_rule":            [],
+				"logging":                   [],
+				"replication_configuration": [],
+				"tags": {
+					"environment": "dev",
+				},
+				"tags_all": {
+					"environment": "dev",
+				},
+				"website": [],
+			},
+			"after_unknown": {
+				"acceleration_status": true,
+				"arn":                                  true,
+				"bucket":                               true,
+				"bucket_domain_name":                   true,
+				"bucket_regional_domain_name":          true,
+				"cors_rule":                            [],
+				"grant":                                [],
+				"hosted_zone_id":                       true,
+				"id":                                   true,
+				"lifecycle_rule":                       [],
+				"logging":                              [],
+				"object_lock_configuration":            true,
+				"object_lock_enabled":                  true,
+				"policy":                               true,
+				"region":                               true,
+				"replication_configuration":            [],
+				"request_payer":                        true,
+				"server_side_encryption_configuration": true,
+				"tags":             {},
+				"tags_all":         {},
+				"versioning":       true,
+				"website":          [],
+				"website_domain":   true,
+				"website_endpoint": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "dev",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_s3_bucket",
+	},
+	"aws_s3_bucket_acl.dev": {
+		"address": "aws_s3_bucket_acl.dev",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"acl": "public-read",
+				"expected_bucket_owner": null,
+			},
+			"after_unknown": {
+				"access_control_policy": true,
+				"bucket":                true,
+				"id":                    true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "dev",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_s3_bucket_acl",
+	},
+	"random_pet.petname": {
+		"address": "random_pet.petname",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"keepers":   null,
+				"length":    4,
+				"prefix":    null,
+				"separator": "-",
+			},
+			"after_unknown": {
+				"id": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "petname",
+		"provider_name":  "registry.terraform.io/hashicorp/random",
+		"type":           "random_pet",
+	},
+}
+
+output_changes = {}
+
+raw = {
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-east-1",
+					},
+				},
+				"full_name":          "registry.terraform.io/hashicorp/aws",
+				"name":               "aws",
+				"version_constraint": "~> 3.0",
+			},
+			"random": {
+				"full_name": "registry.terraform.io/hashicorp/random",
+				"name":      "random",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_s3_bucket.dev",
+					"expressions": {
+						"bucket": {
+							"references": [
+								"random_pet.petname.id",
+								"random_pet.petname",
+							],
+						},
+						"force_destroy": {
+							"constant_value": true,
+						},
+						"policy": {
+							"references": [
+								"random_pet.petname.id",
+								"random_pet.petname",
+							],
+						},
+						"tags": {
+							"constant_value": {
+								"environment": "dev",
+							},
+						},
+					},
+					"mode":                "managed",
+					"name":                "dev",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_s3_bucket",
+				},
+				{
+					"address": "aws_s3_bucket_acl.dev",
+					"expressions": {
+						"acl": {
+							"constant_value": "public-read",
+						},
+						"bucket": {
+							"references": [
+								"aws_s3_bucket.dev.id",
+								"aws_s3_bucket.dev",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "dev",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_s3_bucket_acl",
+				},
+				{
+					"address": "random_pet.petname",
+					"expressions": {
+						"length": {
+							"constant_value": 4,
+						},
+						"separator": {
+							"constant_value": "-",
+						},
+					},
+					"mode":                "managed",
+					"name":                "petname",
+					"provider_config_key": "random",
+					"schema_version":      0,
+					"type":                "random_pet",
+				},
+			],
+		},
+	},
+	"format_version": "1.1",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_s3_bucket.dev",
+					"mode":           "managed",
+					"name":           "dev",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"cors_rule":                            [],
+						"grant":                                [],
+						"lifecycle_rule":                       [],
+						"logging":                              [],
+						"object_lock_configuration":            [],
+						"replication_configuration":            [],
+						"server_side_encryption_configuration": [],
+						"tags":       {},
+						"tags_all":   {},
+						"versioning": [],
+						"website":    [],
+					},
+					"type": "aws_s3_bucket",
+					"values": {
+						"acl":                       "private",
+						"bucket_prefix":             null,
+						"cors_rule":                 [],
+						"force_destroy":             true,
+						"grant":                     [],
+						"lifecycle_rule":            [],
+						"logging":                   [],
+						"replication_configuration": [],
+						"tags": {
+							"environment": "dev",
+						},
+						"tags_all": {
+							"environment": "dev",
+						},
+						"website": [],
+					},
+				},
+				{
+					"address":        "aws_s3_bucket_acl.dev",
+					"mode":           "managed",
+					"name":           "dev",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"access_control_policy": [],
+					},
+					"type": "aws_s3_bucket_acl",
+					"values": {
+						"acl": "public-read",
+						"expected_bucket_owner": null,
+					},
+				},
+				{
+					"address":          "random_pet.petname",
+					"mode":             "managed",
+					"name":             "petname",
+					"provider_name":    "registry.terraform.io/hashicorp/random",
+					"schema_version":   0,
+					"sensitive_values": {},
+					"type":             "random_pet",
+					"values": {
+						"keepers":   null,
+						"length":    4,
+						"prefix":    null,
+						"separator": "-",
+					},
+				},
+			],
+		},
+	},
+	"relevant_attributes": [
+		{
+			"attribute": [
+				"id",
+			],
+			"resource": "random_pet.petname",
+		},
+		{
+			"attribute": [
+				"id",
+			],
+			"resource": "aws_s3_bucket.dev",
+		},
+	],
+	"resource_changes": [
+		{
+			"address": "aws_s3_bucket.dev",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"acl":                       "private",
+					"bucket_prefix":             null,
+					"cors_rule":                 [],
+					"force_destroy":             true,
+					"grant":                     [],
+					"lifecycle_rule":            [],
+					"logging":                   [],
+					"replication_configuration": [],
+					"tags": {
+						"environment": "dev",
+					},
+					"tags_all": {
+						"environment": "dev",
+					},
+					"website": [],
+				},
+				"after_sensitive": {
+					"cors_rule":                            [],
+					"grant":                                [],
+					"lifecycle_rule":                       [],
+					"logging":                              [],
+					"object_lock_configuration":            [],
+					"replication_configuration":            [],
+					"server_side_encryption_configuration": [],
+					"tags":       {},
+					"tags_all":   {},
+					"versioning": [],
+					"website":    [],
+				},
+				"after_unknown": {
+					"acceleration_status": true,
+					"arn":                                  true,
+					"bucket":                               true,
+					"bucket_domain_name":                   true,
+					"bucket_regional_domain_name":          true,
+					"cors_rule":                            [],
+					"grant":                                [],
+					"hosted_zone_id":                       true,
+					"id":                                   true,
+					"lifecycle_rule":                       [],
+					"logging":                              [],
+					"object_lock_configuration":            true,
+					"object_lock_enabled":                  true,
+					"policy":                               true,
+					"region":                               true,
+					"replication_configuration":            [],
+					"request_payer":                        true,
+					"server_side_encryption_configuration": true,
+					"tags":             {},
+					"tags_all":         {},
+					"versioning":       true,
+					"website":          [],
+					"website_domain":   true,
+					"website_endpoint": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "dev",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_s3_bucket",
+		},
+		{
+			"address": "aws_s3_bucket_acl.dev",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"acl": "public-read",
+					"expected_bucket_owner": null,
+				},
+				"after_sensitive": {
+					"access_control_policy": [],
+				},
+				"after_unknown": {
+					"access_control_policy": true,
+					"bucket":                true,
+					"id":                    true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "dev",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_s3_bucket_acl",
+		},
+		{
+			"address": "random_pet.petname",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"keepers":   null,
+					"length":    4,
+					"prefix":    null,
+					"separator": "-",
+				},
+				"after_sensitive": {},
+				"after_unknown": {
+					"id": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "petname",
+			"provider_name": "registry.terraform.io/hashicorp/random",
+			"type":          "random_pet",
+		},
+	],
+	"terraform_version": "1.3.7",
+}
